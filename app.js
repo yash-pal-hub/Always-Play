@@ -5,7 +5,7 @@
 // Sample Video Database
 const videoDB = {
   free: [
-    { id: 1, title: 'Learn Web Development Basics', channel: 'Tech Academy', views: '245K', date: '2 days ago', duration: '45:20', category: 'education', thumbnail: '🎓', description: 'Master HTML, CSS, and JavaScript fundamentals, videoUrl: 'testvideo.mp4' .' },
+   { id: 1, title: 'Learn Web Development Basics', channel: 'Tech Academy', views: '245K', date: '2 days ago', duration: '45:20', category: 'education', thumbnail: '🎓', description: 'Master HTML, CSS, and JavaScript fundamentals', videoUrl: 'video/testvideo.mp4' }
     { id: 2, title: 'Best Gaming Moments 2026', channel: 'Pro Gamer', views: '1.2M', date: '1 week ago', duration: '32:15', category: 'gaming', thumbnail: '🎮', description: 'Epic gaming highlights from the best players.' },
     { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn professional music production techniques.' },
     { id: 4, title: 'Breaking Tech News', channel: 'Tech News Daily', views: '567K', date: '1 day ago', duration: '12:30', category: 'news', thumbnail: '📰', description: 'Latest updates in the tech world.' },
