@@ -128,3 +128,20 @@ function showToast(message) {
     toast.classList.remove('show');
   }, 3000);
 }
+function displayVideo() {
+  if (!currentVideo) return;
+
+  // Set video source
+  if (currentVideo.videoUrl) {
+    document.getElementById('videoSource').src = currentVideo.videoUrl;
+    document.getElementById('videoPlayer').load(); // Reload video element
+  }
+
+  document.getElementById('playerTitle').textContent = currentVideo.title;
+  document.getElementById('playerViews').textContent = currentVideo.views + ' views • ' + currentVideo.date;
+  document.getElementById('channelName').textContent = currentVideo.channel;
+  document.getElementById('videoDescription').textContent = currentVideo.description;
+  document.getElementById('videoEmoji').textContent = currentVideo.thumbnail;
+  document.getElementById('videoTitle').textContent = currentVideo.title;
+  document.getElementById('channelAvatar').textContent = currentVideo.channel.charAt(0).toUpperCase();
+}
