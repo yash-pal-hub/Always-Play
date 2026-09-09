@@ -1,5 +1,5 @@
 /* ========================================
-   Always Play — Video Player Logic
+   Always Play — Video Player Logic (fixed)
    ======================================== */
 
 let currentVideo = null;
@@ -24,13 +24,27 @@ function loadVideoFromSession() {
 function displayVideo() {
   if (!currentVideo) return;
 
-  document.getElementById('playerTitle').textContent = currentVideo.title;
-  document.getElementById('playerViews').textContent = currentVideo.views + ' views • ' + currentVideo.date;
-  document.getElementById('channelName').textContent = currentVideo.channel;
-  document.getElementById('videoDescription').textContent = currentVideo.description;
-  document.getElementById('videoEmoji').textContent = currentVideo.thumbnail;
-  document.getElementById('videoTitle').textContent = currentVideo.title;
-  document.getElementById('channelAvatar').textContent = currentVideo.channel.charAt(0).toUpperCase();
+  // Set video source if provided
+  if (currentVideo.videoUrl) {
+    const videoSource = document.getElementById('videoSource');
+    const videoPlayer = document.getElementById('videoPlayer');
+    if (videoSource) videoSource.src = currentVideo.videoUrl;
+    if (videoPlayer) videoPlayer.load();
+  }
+
+  const elPlayerTitle = document.getElementById('playerTitle');
+  const elPlayerViews = document.getElementById('playerViews');
+  const elChannelName = document.getElementById('channelName');
+  const elVideoDescription = document.getElementById('videoDescription');
+  const elVideoEmoji = document.getElementById('videoEmoji'); // optional
+  const elChannelAvatar = document.getElementById('channelAvatar');
+
+  if (elPlayerTitle) elPlayerTitle.textContent = currentVideo.title || '';
+  if (elPlayerViews) elPlayerViews.textContent = (currentVideo.views ? currentVideo.views + ' views • ' : '') + (currentVideo.date || '');
+  if (elChannelName) elChannelName.textContent = currentVideo.channel || '';
+  if (elVideoDescription) elVideoDescription.textContent = currentVideo.description || '';
+  if (elVideoEmoji) elVideoEmoji.textContent = currentVideo.thumbnail || '';
+  if (elChannelAvatar && currentVideo.channel) elChannelAvatar.textContent = currentVideo.channel.charAt(0).toUpperCase();
 }
 
 function toggleLike(btn) {
@@ -48,7 +62,7 @@ function toggleSubscribe(btn) {
   if (isSubscribed) {
     btn.classList.add('subscribed');
     btn.textContent = '✅ Subscribed';
-    showToast('🔔 Subscribed to ' + currentVideo.channel);
+    showToast('🔔 Subscribed to ' + (currentVideo ? currentVideo.channel : ''));
   } else {
     btn.classList.remove('subscribed');
     btn.textContent = '🔔 Subscribe';
@@ -57,11 +71,14 @@ function toggleSubscribe(btn) {
 
 function shareVideo() {
   const url = window.location.href;
-  if (navigator.share) {
+  if (navigator.share && currentVideo) {
     navigator.share({
       title: currentVideo.title,
       text: 'Check out this video on Always Play',
       url: url
+    }).catch(() => {
+      navigator.clipboard.writeText(url);
+      showToast('📤 Link copied to clipboard');
     });
   } else {
     navigator.clipboard.writeText(url);
@@ -87,6 +104,7 @@ function handleCommentSubmit(e) {
 
 function addComment(text) {
   const commentsList = document.getElementById('commentsList');
+  if (!commentsList) return;
   const newComment = document.createElement('div');
   newComment.className = 'comment';
   newComment.innerHTML = `
@@ -112,36 +130,22 @@ function checkUserStatus() {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const currentUser = localStorage.getItem('currentUser');
   if (isLoggedIn && currentUser) {
-    document.getElementById('userBtn2').textContent = '👤 ' + currentUser;
+    const userBtn = document.getElementById('userBtn2');
+    if (userBtn) userBtn.textContent = '👤 ' + currentUser;
     if (currentUser === 'admin') {
-      document.getElementById('adminBtn2').style.display = 'flex';
+      const adminBtn = document.getElementById('adminBtn2');
+      if (adminBtn) adminBtn.style.display = 'flex';
     }
   }
 }
 
 function showToast(message) {
   const toast = document.getElementById('toast');
+  if (!toast) return;
   toast.textContent = message;
   toast.classList.add('show');
 
   setTimeout(() => {
     toast.classList.remove('show');
   }, 3000);
-}
-function displayVideo() {
-  if (!currentVideo) return;
-
-  // Set video source
-  if (currentVideo.videoUrl) {
-    document.getElementById('videoSource').src = currentVideo.videoUrl;
-    document.getElementById('videoPlayer').load(); // Reload video element
-  }
-
-  document.getElementById('playerTitle').textContent = currentVideo.title;
-  document.getElementById('playerViews').textContent = currentVideo.views + ' views • ' + currentVideo.date;
-  document.getElementById('channelName').textContent = currentVideo.channel;
-  document.getElementById('videoDescription').textContent = currentVideo.description;
-  document.getElementById('videoEmoji').textContent = currentVideo.thumbnail;
-  document.getElementById('videoTitle').textContent = currentVideo.title;
-  document.getElementById('channelAvatar').textContent = currentVideo.channel.charAt(0).toUpperCase();
 }
