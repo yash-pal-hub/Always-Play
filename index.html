@@ -118,16 +118,16 @@
         <div class="amount-label">One-time Premium Access</div>
       </div>
 
-      <div class="payment-options">
-        <div class="payment-option selected" onclick="selectPayment('usdt')">
-          <div class="crypto-icon">💲</div>
-          <div class="crypto-name">USDT (TRC20)</div>
-        </div>
-        <div class="payment-option" onclick="selectPayment('btc')">
-          <div class="crypto-icon">₿</div>
-          <div class="crypto-name">Bitcoin</div>
-        </div>
-      </div>
+    <div class="payment-options">
+  <div class="payment-option selected" onclick="selectPayment('usdt', this)">
+    <div class="crypto-icon">💲</div>
+    <div class="crypto-name">USDT (TRC20)</div>
+  </div>
+  <div class="payment-option" onclick="selectPayment('btc', this)">
+    <div class="crypto-icon">₿</div>
+    <div class="crypto-name">Bitcoin</div>
+  </div>
+</div>
 
       <div class="wallet-details" id="walletDetails">
         <div class="qr-placeholder" id="qrCode">
