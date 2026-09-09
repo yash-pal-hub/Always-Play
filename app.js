@@ -2,7 +2,6 @@
    Always Play — Main Application Logic (fixed)
    ======================================== */
 
-// Sample Video Database
 name=app.js url=https://github.com/yash-pal-hub/Always-Play/blob/main/app.js
 // Sample Video Database
 const videoDB = {
@@ -12,7 +11,7 @@ const videoDB = {
     { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn pro tips for better music',videoUrl: '' },
     { id: 4, title: 'Breaking Tech News', channel: 'Tech News Daily', views: '567K', date: '1 day ago', duration: '12:30', category: 'news', thumbnail: '📰', description: 'Latest updates in the tech world', videoUrl: '' },
     { id: 5, title: 'Fitness Workout Routine', channel: 'Fit Life', views: '432K', date: '4 days ago', duration: '35:00', category: 'sports', thumbnail: '⚽', description: 'Full-body workout for beginners', videoUrl: ''  },
-    { id: 6, title: 'My Test Video', channel: 'Test Channel', views: '100', date: 'Today', duration: '2:15', category: 'music', thumbnail: '🎬', description: 'Test video from local file', videoUrl: '' }
+    { id: 6, title: 'My Test Video', channel: 'Test Channel', views: '100', date: 'Today', duration: '2:15', category: 'music', thumbnail: '🎬', description: 'Test video from local file', videoUrl: 'video/testvideo.mp4' }
   ],
   premium: [
     { id: 101, title: 'Advanced JavaScript Mastery', channel: 'Code Masters', views: '890K', date: '1 week ago', duration: '120:45', category: 'tech', thumbnail: '💻', description: 'Deep dive into advanced JS topics.' },
