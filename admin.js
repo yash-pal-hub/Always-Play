@@ -89,7 +89,7 @@ function logout() {
     showToast('👋 Logged out. Redirecting...');
 
     setTimeout(() => {
-      window.location.href = '../index11.html';
+      window.location.href = 'index.html';
     }, 1000);
   }
 }
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!isLoggedIn || currentUser !== 'admin') {
     showToast('🔒 Admin access required');
     setTimeout(() => {
-      window.location.href = '../index11.html';
+      window.location.href = 'index.html';
     }, 1500);
   }
 });
