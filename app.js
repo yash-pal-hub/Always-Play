@@ -6,10 +6,10 @@
 const videoDB = {
   free: [
     { id: 1, title: 'Learn Web Development Basics', channel: 'Tech Academy', views: '245K', date: '2 days ago', duration: '45:20', category: 'education', thumbnail: '🎓', description: 'Master HTML, CSS & JavaScript', videoUrl: 'video/testvideo.mp4' },
-    { id: 2, title: 'Best Gaming Moments 2026', channel: 'Pro Gamer', views: '1.2M', date: '1 week ago', duration: '32:15', category: 'gaming', thumbnail: '🎮', description: 'Epic gaming highlights', videoUrl: '' },
-    { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn pro tips for better music',videoUrl: '' },
-    { id: 4, title: 'Breaking Tech News', channel: 'Tech News Daily', views: '567K', date: '1 day ago', duration: '12:30', category: 'news', thumbnail: '📰', description: 'Latest updates in the tech world', videoUrl: '' },
-    { id: 5, title: 'Fitness Workout Routine', channel: 'Fit Life', views: '432K', date: '4 days ago', duration: '35:00', category: 'sports', thumbnail: '⚽', description: 'Full-body workout for beginners', videoUrl: ''  },
+    { id: 2, title: 'Best Gaming Moments 2026', channel: 'Pro Gamer', views: '1.2M', date: '1 week ago', duration: '32:15', category: 'gaming', thumbnail: '🎮', description: 'Epic gaming highlights', videoUrl: 'https://drive.google.com/file/d/1WJkFcAnmJxMy8eU6lgudxCmXzaBLPGoT/view?usp=drive_link' },
+    { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn pro tips for better music',videoUrl: 'https://drive.google.com/file/d/1WJkFcAnmJxMy8eU6lgudxCmXzaBLPGoT/view?usp=drive_link' },
+    { id: 4, title: 'Breaking Tech News', channel: 'Tech News Daily', views: '567K', date: '1 day ago', duration: '12:30', category: 'news', thumbnail: '📰', description: 'Latest updates in the tech world', videoUrl: 'https://drive.google.com/file/d/1WJkFcAnmJxMy8eU6lgudxCmXzaBLPGoT/view?usp=drive_link' },
+    { id: 5, title: 'Fitness Workout Routine', channel: 'Fit Life', views: '432K', date: '4 days ago', duration: '35:00', category: 'sports', thumbnail: '⚽', description: 'Full-body workout for beginners', videoUrl: 'https://drive.google.com/file/d/1WJkFcAnmJxMy8eU6lgudxCmXzaBLPGoT/view?usp=drive_link'  },
     { id: 6, title: 'My Test Video', channel: 'Test Channel', views: '100', date: 'Today', duration: '2:15', category: 'music', thumbnail: '🎬', description: 'Test video from local file', videoUrl: 'video/testvideo.mp4' }
   ],
   premium: [
