@@ -29,13 +29,13 @@
       <button class="btn btn-gold" onclick="alert('Studio features coming soon!')">📹 Go to Studio</button>
     </div>
 
-    <!-- Tabs -->
-    <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchTab('videos')">📺 My Videos</button>
-      <button class="admin-tab" onclick="switchTab('upload')">⬆️ Upload</button>
-      <button class="admin-tab" onclick="switchTab('analytics')">📊 Analytics</button>
-      <button class="admin-tab" onclick="switchTab('settings')">⚙️ Settings</button>
-    </div>
+ <!-- Tabs -->
+<div class="admin-tabs">
+  <button class="admin-tab active" onclick="switchTab('videos', this)">📺 My Videos</button>
+  <button class="admin-tab" onclick="switchTab('upload', this)">⬆️ Upload</button>
+  <button class="admin-tab" onclick="switchTab('analytics', this)">📊 Analytics</button>
+  <button class="admin-tab" onclick="switchTab('settings', this)">⚙️ Settings</button>
+</div>
 
     <!-- Videos Tab -->
     <div id="videosTab" class="tab-content">
