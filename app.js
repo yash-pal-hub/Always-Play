@@ -1,24 +1,24 @@
 /* ========================================
-   Always Play — Main Application Logic
+   Always Play — Main Application Logic (fixed)
    ======================================== */
 
 // Sample Video Database
 const videoDB = {
   free: [
-   { id: 1, title: 'Learn Web Development Basics', channel: 'Tech Academy', views: '245K', date: '2 days ago', duration: '45:20', category: 'education', thumbnail: '🎓', description: 'Master HTML, CSS, and JavaScript fundamentals', videoUrl: 'video/testvideo.mp4' }
-    { id: 2, title: 'Best Gaming Moments 2026', channel: 'Pro Gamer', views: '1.2M', date: '1 week ago', duration: '32:15', category: 'gaming', thumbnail: '🎮', description: 'Epic gaming highlights from the best players.' },
-    { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn professional music production techniques.' },
+    { id: 1, title: 'Learn Web Development Basics', channel: 'Tech Academy', views: '245K', date: '2 days ago', duration: '45:20', category: 'education', thumbnail: '🎓', description: 'Master HTML, CSS and JS fundamentals.' },
+    { id: 2, title: 'Best Gaming Moments 2026', channel: 'Pro Gamer', views: '1.2M', date: '1 week ago', duration: '32:15', category: 'gaming', thumbnail: '🎮', description: 'Epic gaming highlights compilation.' },
+    { id: 3, title: 'Music Production Tips', channel: 'Beat Maker', views: '89K', date: '3 days ago', duration: '28:45', category: 'music', thumbnail: '🎵', description: 'Learn pro tips for better mixes.' },
     { id: 4, title: 'Breaking Tech News', channel: 'Tech News Daily', views: '567K', date: '1 day ago', duration: '12:30', category: 'news', thumbnail: '📰', description: 'Latest updates in the tech world.' },
-    { id: 5, title: 'Fitness Workout Routine', channel: 'Fit Life', views: '432K', date: '4 days ago', duration: '35:00', category: 'sports', thumbnail: '⚽', description: 'Full-body workout for beginners and pros.' },
-    { id: 6, title: 'Cryptocurrency Explained', channel: 'Crypto Expert', views: '678K', date: '5 days ago', duration: '41:20', category: 'tech', thumbnail: '💻', description: 'Understanding blockchain and crypto fundamentals.' },
+    { id: 5, title: 'Fitness Workout Routine', channel: 'Fit Life', views: '432K', date: '4 days ago', duration: '35:00', category: 'sports', thumbnail: '⚽', description: 'Full-body workout for beginners.' },
+    { id: 6, title: 'Cryptocurrency Explained', channel: 'Crypto Expert', views: '678K', date: '5 days ago', duration: '41:20', category: 'tech', thumbnail: '💻', description: 'Understanding blockchain basics.' }
   ],
   premium: [
-    { id: 101, title: 'Advanced JavaScript Mastery', channel: 'Code Masters', views: '890K', date: '1 week ago', duration: '120:45', category: 'tech', thumbnail: '💻', description: 'Deep dive into advanced JavaScript patterns and techniques.' },
-    { id: 102, title: 'Hollywood Movie Premiere', channel: 'Entertainment Plus', views: '2.3M', date: '2 days ago', duration: '150:00', category: 'entertainment', thumbnail: '🎬', description: 'Exclusive premiere of the latest blockbuster film.' },
-    { id: 103, title: 'Professional Music Production Course', channel: 'Sound Design Pro', views: '1.1M', date: '1 week ago', duration: '180:30', category: 'music', thumbnail: '🎵', description: 'Complete course on modern music production.' },
-    { id: 104, title: 'Stock Market Secrets', channel: 'Finance Daily', views: '756K', date: '3 days ago', duration: '95:20', category: 'news', thumbnail: '📰', description: 'Learn professional stock trading strategies.' },
-    { id: 105, title: 'Gaming Esports Championship', channel: 'Esports World', views: '3.4M', date: '1 day ago', duration: '240:00', category: 'gaming', thumbnail: '🎮', description: 'International gaming championship finals.' },
-    { id: 106, title: 'AI & Machine Learning Deep Dive', channel: 'AI Academy', views: '1.8M', date: '4 days ago', duration: '160:15', category: 'education', thumbnail: '🎓', description: 'Complete guide to AI and machine learning.' },
+    { id: 101, title: 'Advanced JavaScript Mastery', channel: 'Code Masters', views: '890K', date: '1 week ago', duration: '120:45', category: 'tech', thumbnail: '💻', description: 'Deep dive into advanced JS topics.' },
+    { id: 102, title: 'Hollywood Movie Premiere', channel: 'Entertainment Plus', views: '2.3M', date: '2 days ago', duration: '150:00', category: 'entertainment', thumbnail: '🎬', description: 'Exclusive premiere coverage.' },
+    { id: 103, title: 'Professional Music Production Course', channel: 'Sound Design Pro', views: '1.1M', date: '1 week ago', duration: '180:30', category: 'music', thumbnail: '🎵', description: 'Complete production workflow.' },
+    { id: 104, title: 'Stock Market Secrets', channel: 'Finance Daily', views: '756K', date: '3 days ago', duration: '95:20', category: 'news', thumbnail: '📰', description: 'Trading strategies and insights.' },
+    { id: 105, title: 'Gaming Esports Championship', channel: 'Esports World', views: '3.4M', date: '1 day ago', duration: '240:00', category: 'gaming', thumbnail: '🎮', description: 'Highlights from the championship.' },
+    { id: 106, title: 'AI & Machine Learning Deep Dive', channel: 'AI Academy', views: '1.8M', date: '4 days ago', duration: '160:15', category: 'education', thumbnail: '🎓', description: 'Comprehensive ML course.' }
   ]
 };
 
@@ -38,15 +38,19 @@ function loadVideos() {
   const freeGrid = document.getElementById('freeVideoGrid');
   const premiumGrid = document.getElementById('premiumVideoGrid');
 
-  freeGrid.innerHTML = videoDB.free
-    .filter(v => currentCategory === 'all' || v.category === currentCategory)
-    .map(v => createVideoCard(v, false))
-    .join('');
+  if (freeGrid) {
+    freeGrid.innerHTML = videoDB.free
+      .filter(v => currentCategory === 'all' || v.category === currentCategory)
+      .map(v => createVideoCard(v, false))
+      .join('');
+  }
 
-  premiumGrid.innerHTML = videoDB.premium
-    .filter(v => currentCategory === 'all' || v.category === currentCategory)
-    .map(v => createVideoCard(v, true))
-    .join('');
+  if (premiumGrid) {
+    premiumGrid.innerHTML = videoDB.premium
+      .filter(v => currentCategory === 'all' || v.category === currentCategory)
+      .map(v => createVideoCard(v, true))
+      .join('');
+  }
 }
 
 // Create Video Card HTML
@@ -96,18 +100,27 @@ function searchVideos(query) {
     v.channel.toLowerCase().includes(query.toLowerCase())
   );
 
-  freeGrid.innerHTML = filtered(videoDB.free)
-    .map(v => createVideoCard(v, false))
-    .join('');
-  premiumGrid.innerHTML = filtered(videoDB.premium)
-    .map(v => createVideoCard(v, true))
-    .join('');
+  if (freeGrid) {
+    freeGrid.innerHTML = filtered(videoDB.free)
+      .map(v => createVideoCard(v, false))
+      .join('');
+  }
+  if (premiumGrid) {
+    premiumGrid.innerHTML = filtered(videoDB.premium)
+      .map(v => createVideoCard(v, true))
+      .join('');
+  }
 }
 
 // Play Video
 function playVideo(videoId, isPremium) {
   const db = isPremium ? videoDB.premium : videoDB.free;
   const video = db.find(v => v.id === videoId);
+
+  if (!video) {
+    showToast('Video not found');
+    return;
+  }
 
   if (isPremium && !premiumUnlocked && !isLoggedIn) {
     showToast('🔒 Sign in to unlock premium content');
@@ -126,27 +139,35 @@ function openPaymentModal() {
     showToast('✅ You already have premium access!');
     return;
   }
-  document.getElementById('paymentModal').classList.add('active');
+  const modal = document.getElementById('paymentModal');
+  if (modal) modal.classList.add('active');
 }
 
 function closePaymentModal() {
-  document.getElementById('paymentModal').classList.remove('active');
+  const modal = document.getElementById('paymentModal');
+  if (modal) modal.classList.remove('active');
 }
 
-function selectPayment(method) {
+// selectPayment now expects the clicked element as second arg
+function selectPayment(method, el) {
   document.querySelectorAll('.payment-option').forEach(p => p.classList.remove('selected'));
-  event.target.closest('.payment-option').classList.add('selected');
+  if (!el) return;
+  el.classList.add('selected');
 
   const walletAddr = document.getElementById('walletAddr');
-  if (method === 'usdt') {
-    walletAddr.textContent = 'TCbER7317adzPxTPic5FQjwiVUjMmwtLbQ';
-  } else {
-    walletAddr.textContent = '13CbEKY8rCg6qTLFWyePKV85G3otYjUNdm';
+  if (walletAddr) {
+    if (method === 'usdt') {
+      walletAddr.textContent = 'TCbER7317adzPxTPic5FQjwiVUjMmwtLbQ';
+    } else {
+      walletAddr.textContent = '13CbEKY8rCg6qTLFWyePKV85G3otYjUNdm';
+    }
   }
 }
 
 function copyAddress() {
-  const addr = document.getElementById('walletAddr').textContent;
+  const addrEl = document.getElementById('walletAddr');
+  const addr = addrEl ? addrEl.textContent : '';
+  if (!addr) return;
   navigator.clipboard.writeText(addr);
   showToast('📋 Address copied to clipboard!');
 }
@@ -180,12 +201,14 @@ function toggleAuthModal() {
   if (isLoggedIn) {
     logout();
   } else {
-    document.getElementById('authModal').classList.add('active');
+    const modal = document.getElementById('authModal');
+    if (modal) modal.classList.add('active');
   }
 }
 
 function closeAuthModal() {
-  document.getElementById('authModal').classList.remove('active');
+  const modal = document.getElementById('authModal');
+  if (modal) modal.classList.remove('active');
 }
 
 function login() {
@@ -202,8 +225,10 @@ function login() {
     currentUser = user;
     localStorage.setItem('currentUser', user);
     localStorage.setItem('isLoggedIn', 'true');
-    document.getElementById('userBtn').textContent = '👤 ' + user;
-    document.getElementById('adminBtn').style.display = 'flex';
+    const userBtn = document.getElementById('userBtn');
+    if (userBtn) userBtn.textContent = '👤 ' + user;
+    const adminBtn = document.getElementById('adminBtn');
+    if (adminBtn) adminBtn.style.display = 'flex';
     closeAuthModal();
     showToast('✅ Logged in as admin!');
     loadVideos();
@@ -221,8 +246,10 @@ function logout() {
   currentUser = null;
   localStorage.removeItem('currentUser');
   localStorage.removeItem('isLoggedIn');
-  document.getElementById('userBtn').textContent = '👤';
-  document.getElementById('adminBtn').style.display = 'none';
+  const userBtn = document.getElementById('userBtn');
+  if (userBtn) userBtn.textContent = '👤';
+  const adminBtn = document.getElementById('adminBtn');
+  if (adminBtn) adminBtn.style.display = 'none';
   closeAuthModal();
   showToast('👋 Logged out');
   loadVideos();
@@ -237,9 +264,11 @@ function checkAdminStatus() {
   if (savedUser && savedLogin === 'true') {
     isLoggedIn = true;
     currentUser = savedUser;
-    document.getElementById('userBtn').textContent = '👤 ' + savedUser;
+    const userBtn = document.getElementById('userBtn');
+    if (userBtn) userBtn.textContent = '👤 ' + savedUser;
     if (savedUser === 'admin') {
-      document.getElementById('adminBtn').style.display = 'flex';
+      const adminBtn = document.getElementById('adminBtn');
+      if (adminBtn) adminBtn.style.display = 'flex';
     }
   }
 
@@ -251,6 +280,7 @@ function checkAdminStatus() {
 // Toast Notification
 function showToast(message) {
   const toast = document.getElementById('toast');
+  if (!toast) return;
   toast.textContent = message;
   toast.classList.add('show');
 
