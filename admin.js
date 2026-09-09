@@ -1,8 +1,8 @@
 /* ========================================
-   Always Play — Admin Panel Logic
+   Always Play — Admin Panel Logic (fixed)
    ======================================== */
 
-function switchTab(tabName) {
+function switchTab(tabName, el) {
   // Hide all tabs
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.style.display = 'none';
@@ -15,12 +15,15 @@ function switchTab(tabName) {
 
   // Show selected tab
   const tabId = tabName + 'Tab';
-  if (document.getElementById(tabId)) {
-    document.getElementById(tabId).style.display = 'block';
+  const tabEl = document.getElementById(tabId);
+  if (tabEl) {
+    tabEl.style.display = 'block';
   }
 
-  // Add active class to clicked button
-  event.target.classList.add('active');
+  // Add active class to clicked button (el)
+  if (el) {
+    el.classList.add('active');
+  }
 }
 
 function handleFileUpload(event) {
