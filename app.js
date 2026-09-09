@@ -2,7 +2,6 @@
    Always Play — Main Application Logic (fixed)
    ======================================== */
 
-name=app.js url=https://github.com/yash-pal-hub/Always-Play/blob/main/app.js
 // Sample Video Database
 const videoDB = {
   free: [
