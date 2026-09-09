@@ -4,10 +4,10 @@
 ### 📁 Project Structure
 ```
 always-play/
-├── index11.html          # Home page with video grid
+├── index.html          # Home page with video grid
 ├── player.html           # Video player page
 ├── css/
-│   └── style11.css       # Complete styling (Netflix-style dark theme)
+│   └── style.css       # Complete styling (Netflix-style dark theme)
 ├── js/
 │   ├── app.js            # Main app logic
 │   ├── player.js         # Player page logic
@@ -51,8 +51,8 @@ always-play/
 - Dark mode optimized
 
 ### 🔐 Authentication System
-- **Username**: `admin`
-- **Password**: `admin123`
+- **Username**: `*******`
+- **Password**: `*********`
 - Admin status unlocks the admin panel
 - Premium access system with crypto payments
 
@@ -70,7 +70,7 @@ always-play/
 ### 🚀 How to Use
 
 1. **Open the website**
-   - Open `index11.html` in your browser
+   - Open `index.html` in your browser
 
 2. **Browse Videos**
    - Filter by category using chips
@@ -89,7 +89,7 @@ always-play/
 
 5. **Admin Access**
    - Click profile icon (👤)
-   - Login with admin/admin123
+   - Login with *************
    - Access admin panel via ⚙️ button
    - Upload videos, view analytics, manage settings
 
@@ -107,15 +107,15 @@ always-play/
   - Payment confirmations (TXID)
 
 ### 🎨 Customization Tips
-- Change colors in `css/style11.css` `:root` variables
+- Change colors in `css/style.css` `:root` variables
 - Modify video database in `js/app.js` `videoDB` object
 - Update wallet addresses in payment modal
 - Adjust prices and features as needed
 
 ### 📝 Files to Run
-1. `index11.html` - Main home page
+1. `index.html` - Main home page
 2. `player.html` - Video player (auto-navigated from home)
-3. `admin/indexnew.html` - Admin panel (auto-navigated after login)
+3. `admin/index.html` - Admin panel (auto-navigated after login)
 
 ---
 
