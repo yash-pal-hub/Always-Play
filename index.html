@@ -1,0 +1,194 @@
+<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Always Play — Stream Videos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <div class="logo">Always<span>Play</span> ▶</div>
+    </a>
+    <div class="navbar-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search videos..." onkeyup="searchVideos(this.value)">
+    </div>
+    <div class="navbar-actions">
+      <button class="btn-icon" title="Notifications" onclick="showToast('No new notifications')">🔔</button>
+      <button class="btn btn-gold" onclick="openPaymentModal()">⭐ Premium</button>
+      <button class="btn-icon" id="adminBtn" title="Admin Panel" onclick="window.location.href='admin/index.html'" style="display:none;">⚙️</button>
+      <button class="btn-icon" id="userBtn" title="Profile" onclick="toggleAuthModal()">👤</button>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero" id="heroBanner">
+    <div class="hero-content">
+      <span class="hero-badge">🔥 Trending Now</span>
+      <h1>Unlimited Entertainment Awaits</h1>
+      <p>Watch free videos or unlock exclusive premium content. Stream anytime, anywhere on Always Play.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('freeSection').scrollIntoView({behavior:'smooth'})">▶ Watch Free</button>
+        <button class="btn btn-gold" onclick="openPaymentModal()">⭐ Go Premium</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Bar -->
+  <div class="category-bar" id="categoryBar">
+    <button class="chip active" onclick="filterCategory('all', this)">🔥 All</button>
+    <button class="chip" onclick="filterCategory('music', this)">🎵 Music</button>
+    <button class="chip" onclick="filterCategory('gaming', this)">🎮 Gaming</button>
+    <button class="chip" onclick="filterCategory('education', this)">📚 Education</button>
+    <button class="chip" onclick="filterCategory('tech', this)">💻 Tech</button>
+    <button class="chip" onclick="filterCategory('entertainment', this)">🎬 Entertainment</button>
+    <button class="chip" onclick="filterCategory('sports', this)">⚽ Sports</button>
+    <button class="chip" onclick="filterCategory('news', this)">📰 News</button>
+  </div>
+
+  <!-- Free Videos Section -->
+  <section class="section" id="freeSection">
+    <div class="section-header">
+      <h2>🎬 Free Videos</h2>
+      <a href="#" class="see-all" onclick="filterCategory('all')">See All →</a>
+    </div>
+    <div class="video-grid" id="freeVideoGrid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- Premium Videos Section -->
+  <section class="section" id="premiumSection">
+    <div class="section-header">
+      <h2>⭐ Premium Content</h2>
+      <a href="#" class="see-all" onclick="openPaymentModal()">Unlock All →</a>
+    </div>
+    <div class="video-grid" id="premiumVideoGrid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Always Play</h4>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Community</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">DMCA</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#">Twitter / X</a>
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Always Play. All rights reserved.</span>
+      <span>Made with ❤️ by Yash</span>
+    </div>
+  </footer>
+
+  <!-- Payment Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closePaymentModal()">✕</button>
+      <h2>⭐ Unlock Premium</h2>
+      <p class="modal-subtitle">Pay with cryptocurrency to access all premium content</p>
+
+      <div class="payment-amount">
+        <div class="amount">$9.99</div>
+        <div class="amount-label">One-time Premium Access</div>
+      </div>
+
+      <div class="payment-options">
+        <div class="payment-option selected" onclick="selectPayment('usdt')">
+          <div class="crypto-icon">💲</div>
+          <div class="crypto-name">USDT (TRC20)</div>
+        </div>
+        <div class="payment-option" onclick="selectPayment('btc')">
+          <div class="crypto-icon">₿</div>
+          <div class="crypto-name">Bitcoin</div>
+        </div>
+      </div>
+
+      <div class="wallet-details" id="walletDetails">
+        <div class="qr-placeholder" id="qrCode">
+          <span>QR Code</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Send exactly <strong style="color:var(--gold);">$9.99</strong> to:</p>
+        <div class="wallet-address">
+          <code id="walletAddr">TCbER7317adzPxTPic5FQjwiVUjMmwtLbQ</code>
+          <button class="copy-btn" onclick="copyAddress()">📋 Copy</button>
+        </div>
+      </div>
+
+      <div class="txid-form">
+        <h3 style="font-size:16px; margin-bottom:16px;">Confirm Payment</h3>
+        <div class="form-group">
+          <label>Transaction ID (TXID)</label>
+          <input type="text" id="txidInput" placeholder="Paste your transaction ID here">
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="emailInput" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Notes (optional)</label>
+          <textarea id="notesInput" placeholder="Any additional details..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;" onclick="submitPayment()">
+          ✅ Submit Payment Confirmation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeAuthModal()">✕</button>
+      <div class="auth-form">
+        <h2>👤 Sign In</h2>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="loginUser" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPass" placeholder="Enter password">
+        </div>
+        <button class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;" onclick="login()">
+          Sign In
+        </button>
+        <div class="divider">or</div>
+        <button class="btn btn-outline" style="width:100%; justify-content:center; padding:12px;" onclick="signUp()">
+          Create Account
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
